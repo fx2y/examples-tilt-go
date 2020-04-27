@@ -1,5 +1,6 @@
-FROM golang:1.14
+FROM alpine
+RUN apk add entr
 WORKDIR /app
-ADD . .
-RUN go install ./
-ENTRYPOINT examples-tilt-go
+ADD web web
+ADD build build
+ENTRYPOINT build/examples-tilt-go
